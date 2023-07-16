@@ -8,3 +8,8 @@ class UserProvider extends GetConnect{
   //promise(데이터 약속)
   Future<Response> join(Map data)=>post("$host/join", data);
 }
+
+class UserProviderTwo extends GetConnect{
+  //promise(데이터 약속)
+  Future<Response> login(Map data)=>post("$host/login", data);
+}

@@ -1,18 +1,18 @@
 
 class User{
-  final String? loginid;
+  final String? loginId;
   final String? password;
-  final String? nickname;
+  //final String? nickname;
 
   User({
-    this.loginid,
+    this.loginId,
     this.password,
-    this.nickname
+    //this.nickname
   });
 
   //통신을 위해서 json 처럼 생긴 문자열{"id":1}=>dart 오브젝트
   User.fromJson(Map<String, dynamic> json)
-     :loginid=json["loginid"],
-      password=json["password"],
-      nickname=json["nickname"];
+     :loginId=json["loginId"],
+      password=json["password"];
+      //nickname=json["nickname"];
 }

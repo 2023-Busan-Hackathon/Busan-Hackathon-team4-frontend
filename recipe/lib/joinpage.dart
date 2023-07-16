@@ -59,7 +59,7 @@ class JoinPage extends StatelessWidget {
                 funpageRoute: (){
                   if(_formKey.currentState!.validate()){
                     //Get.to(MainPage());
-                    u.join("fltk1004", "1234", "sy");
+                    u.join("fltk1004", "1234");
                   }
                   },
               ),

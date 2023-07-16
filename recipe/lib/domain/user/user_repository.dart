@@ -6,20 +6,40 @@ import 'package:get/get_connect/http/src/response/response.dart';
 class UserRepository{
   final UserProvider _userProvider = UserProvider();
 
-  Future<String> join(String loginid, String password, String nickname) async {
-    LoginReqDto loginReqDto=LoginReqDto(loginid, password, nickname);
+  Future<void> join(String loginId, String password) async {
+    LoginReqDto loginReqDto=LoginReqDto(loginId, password);
     /*print("============");
     print(loginReqDto.toJson());
     print("============");*/
     Response response= await _userProvider.join(loginReqDto.toJson());
-    dynamic body=response.body;
-    String token=body["authorization"];
-    return token;
+    //dynamic body=response.body;
+    //String token=body["authorization"];
+    //return token;
     //print(response);
     /*print("============");
     print(response.body);
     print("============");
     print(response.headers);
     print("============");*/
+  }
+}
+
+class UserRepositoryTwo{
+  final UserProviderTwo _userProviderTwo = UserProviderTwo();
+
+  Future<String> login(String loginId, String password) async {
+    LoginReqDto loginReqDto=LoginReqDto(loginId, password);
+
+    Response response= await _userProviderTwo.login(loginReqDto.toJson());
+    print(response.body);
+    print("============");
+    print(response.headers);
+    dynamic body=response.body;
+    String token=body.data.accessToken;
+    print("============");
+    print(token);
+    print("============");
+    return token;
+
   }
 }
