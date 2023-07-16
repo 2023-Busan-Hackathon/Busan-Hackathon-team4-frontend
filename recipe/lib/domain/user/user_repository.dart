@@ -12,8 +12,8 @@ class UserRepository{
     print(loginReqDto.toJson());
     print("============");*/
     Response response= await _userProvider.join(loginReqDto.toJson());
-    dynamic headers=response.headers;
-    String token=headers["authorization"];
+    dynamic body=response.body;
+    String token=body["authorization"];
     return token;
     //print(response);
     /*print("============");
