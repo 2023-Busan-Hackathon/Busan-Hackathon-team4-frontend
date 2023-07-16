@@ -10,7 +10,7 @@ import 'loginpage.dart';
 
 class JoinPage extends StatelessWidget {
   final _formKey=GlobalKey<FormState>();
-  UserController u=Get.put(UserController());
+  //UserController u=Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class JoinPage extends StatelessWidget {
                 funpageRoute: (){
                   if(_formKey.currentState!.validate()){
                     //Get.to(MainPage());
-                    u.join("fltk1004", "1234");
+                    //u.join("fltk1004", "1234");
                   }
                   },
               ),

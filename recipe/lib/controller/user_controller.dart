@@ -3,7 +3,7 @@ import 'package:community/domain/user/user_repository.dart';
 import 'package:community/util/jwt.dart';
 import 'package:get/get.dart';
 
-class UserController extends GetxController{
+/*class UserController extends GetxController{
   final UserRepository _userRepository=UserRepository();
 
   Future<void> join(String loginId, String password) async {
@@ -11,7 +11,7 @@ class UserController extends GetxController{
     //jwtToken=token;
     //print("jwtToken: $jwtToken");
   }
-}
+}*/
 
 class UserControllerTwo extends GetxController{
   final UserRepositoryTwo _userRepositoryTwo=UserRepositoryTwo();

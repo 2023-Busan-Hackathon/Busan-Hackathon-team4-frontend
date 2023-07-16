@@ -13,7 +13,7 @@ import 'components/customtextformfield.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey=GlobalKey<FormState>();
-  UserControllerTwo u=Get.put(UserControllerTwo());
+  //UserControllerTwo u=Get.put(UserControllerTwo());
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,9 @@ class LoginPage extends StatelessWidget {
                 funpageRoute: (){
                   if(_formKey.currentState!.validate()){
                     //Get.to(MainPage());
-                    u.login("fltk1004", "fltk1486");
+                    //u.login("fltk1004", "fltk1486");
+                    UserRepositoryTwo u=UserRepositoryTwo();
+                    u.login("ssar","1234");
 
                   }
                 },
