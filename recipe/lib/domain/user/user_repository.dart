@@ -27,16 +27,16 @@ import 'package:get/get_connect/http/src/response/response.dart';
 class UserRepositoryTwo{
   final UserProviderTwo _userProviderTwo = UserProviderTwo();
 
-  Future<String> login(String loginId, String password) async {
-    LoginReqDto loginReqDto=LoginReqDto(loginId, password);
+  Future<String> loginUser(String loginId, String password) async {
+    LoginFormDto loginReqDto=LoginFormDto(loginId, password);
     print("============");
     print(loginReqDto.toJson());
     print("============");
-    Response response= await _userProviderTwo.login(loginReqDto.toJson());
+    Response response= await _userProviderTwo.loginUser(loginReqDto.toJson());
     print(response.body);
     print("============");
     print(response.headers);
-    dynamic body=(response.body)['accessToken'];
+    dynamic body=(response.body)["data"];
     String token=body;
     print("============");
     print(token);

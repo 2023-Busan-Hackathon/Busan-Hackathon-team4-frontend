@@ -16,8 +16,8 @@ import 'package:get/get.dart';
 class UserControllerTwo extends GetxController{
   final UserRepositoryTwo _userRepositoryTwo=UserRepositoryTwo();
 
-  Future<void> login(String loginId, String password) async {
-    String token=await _userRepositoryTwo.login(loginId, password);
+  Future<void> loginUser(String loginId, String password) async {
+    String token=await _userRepositoryTwo.loginUser(loginId, password);
     jwtToken=token;
     print("jwtToken: $jwtToken");
   }

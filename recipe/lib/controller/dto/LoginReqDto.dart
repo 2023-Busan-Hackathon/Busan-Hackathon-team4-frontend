@@ -1,9 +1,9 @@
-class LoginReqDto{
+class LoginFormDto{
   final String? loginId;
   final String? password;
   //final String? nickname;
 
-  LoginReqDto(this.loginId, this.password);
+  LoginFormDto(this.loginId, this.password);
 
   Map<String,dynamic> toJson()=>{
     "loginId":loginId,
