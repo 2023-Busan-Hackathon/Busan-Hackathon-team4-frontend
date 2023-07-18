@@ -4,14 +4,29 @@ import 'package:flutter/material.dart';
 class CustomTextFormField extends StatelessWidget {
   final String hint;
   final funValidator;
+  //두줄추
+  fianl String? value;
+  final controller;
 
-  const CustomTextFormField({required this.hint, required this.funValidator});
+  const CustomTextFormField({
+    required this.hint, 
+    required this.funValidator
+//두줄추가
+    this.value,
+    this.controller,
+    });
 
   @override
   Widget build(BuildContext context) {
+    
+   // TextEditingController? t=controller;
+    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
+        //두줄추
+        controller: controller,
+        initialValue: value ?? "",
         validator: funValidator,
         obscureText: hint=="Password" ? true : false,
         decoration: InputDecoration(
