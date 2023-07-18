@@ -1,6 +1,12 @@
 
 import 'package:validators/validators.dart';
 
+Function Validateingredient(){
+  return (String? value){
+    return null;
+  };
+}
+
 Function Validatenickname(){
   return (String? value){
     if(value!.isEmpty){

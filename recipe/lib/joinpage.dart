@@ -9,68 +9,66 @@ import 'controller/user_controller.dart';
 import 'loginpage.dart';
 
 class JoinPage extends StatelessWidget {
-  final _formKey=GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+
   //UserController u=Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView(
-            children: [
-              Container(
-                  alignment: Alignment.center,
-                  height: 200,
-                  child:Text(
-                      "회원가입 페이지",
-                      style:TextStyle(
-                        fontSize:30,
-                        fontWeight:FontWeight.bold,
-                      )
-                  )
-              ),
-              _joinForm()
-            ],
-          ),
-        )
-    );
+        body: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListView(
+        children: [
+          Container(
+              alignment: Alignment.center,
+              height: 200,
+              child: Text("회원가입 페이지",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ))),
+          _joinForm()
+        ],
+      ),
+    ));
   }
 
   Widget _joinForm() {
+    TextEditingController idController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    TextEditingController nicknameController = TextEditingController();
+
     return Form(
-      key: _formKey,
-        child:Column(
-            children:[
-              CustomTextFormField(
-                hint:"ID",
-                funValidator: ValidateID(),
-              ),
-              CustomTextFormField(
-                hint:"Password",
-                funValidator: ValidatePassword(),
-              ),
-              CustomTextFormField(
-                hint:"nickname",
-                funValidator: Validatenickname(),
-              ),
-              CustomElevatedButton(
-                text: "회원가입",
-                funpageRoute: (){
-                  if(_formKey.currentState!.validate()){
-                    //Get.to(MainPage());
-                    //u.join("fltk1004", "1234");
-                  }
-                  },
-              ),
-            ]
-        )
-    );
+        key: _formKey,
+        child: Column(children: [
+          CustomTextFormField(
+            controller: idController,
+            hint: "ID",
+            funValidator: ValidateID(),
+          ),
+          CustomTextFormField(
+            controller: passwordController,
+            hint: "Password",
+            funValidator: ValidatePassword(),
+          ),
+          CustomTextFormField(
+            controller: nicknameController,
+            hint: "nickname",
+            funValidator: Validatenickname(),
+          ),
+          CustomElevatedButton(
+            text: "회원가입",
+            funpageRoute: () {
+              if (_formKey.currentState!.validate()) {
+                //Get.to(MainPage());
+                //u.join("fltk1004", "1234");
+              }
+            },
+          ),
+        ]));
   }
 }
-
-
-
 
 /*class JoinPage extends StatefulWidget{
   final _formKey=GlobalKey<FormState>();

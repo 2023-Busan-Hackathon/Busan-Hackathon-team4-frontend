@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import './mainpages/board.dart';
 import './mainpages/llmrose.dart';
-import './mainpages/camera.dart';
+import './mainpages/chatGpt.dart';
 import 'loginpage.dart';
 import 'testpage.dart';
 

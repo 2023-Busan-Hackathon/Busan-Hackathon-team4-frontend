@@ -13,7 +13,10 @@ import 'components/customtextformfield.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey=GlobalKey<FormState>();
-  UserControllerTwo u=Get.put(UserControllerTwo());
+  //세줄
+  final UserControllerTwo u=Get.put(UserControllerTwo());
+  final _loginId=TextEditingController();
+  final _password=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +44,19 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _loginForm() {
+    TextEditingController idController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Form(
       key: _formKey,
         child:Column(
             children:[
               CustomTextFormField(
+                controller: _loginId,
                 hint:"ID",
                 funValidator: ValidateID(),
               ),
               CustomTextFormField(
+                controller: _password,
                 hint:"Password",
                 funValidator: ValidatePassword(),
               ),
@@ -57,11 +64,10 @@ class LoginPage extends StatelessWidget {
                 text: "로그인",
                 funpageRoute: (){
                   if(_formKey.currentState!.validate()){
-                    //Get.to(MainPage());
-                    //u.login("fltk1004", "fltk1486");
-                    //UserRepositoryTwo u=UserRepositoryTwo();
-                    u.loginUser("ssar","1234");
+                    print(_password.text.trim());
+                    print(_loginId.text.trim());
 
+                    u.loginUser(_loginId.text.trim(),_password.text.trim());
                   }
                 },
               ),
