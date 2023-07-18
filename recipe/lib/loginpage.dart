@@ -13,11 +13,7 @@ import 'components/customtextformfield.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey=GlobalKey<FormState>();
-
-  //바뀐부분 세줄
-  final UserControllerTwo u=Get.put(UserControllerTwo());
-  final _loginId = TextEditingController();
-  final _password = TextEditingController();
+  UserControllerTwo u=Get.put(UserControllerTwo());
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +23,44 @@ class LoginPage extends StatelessWidget {
           child: ListView(
             children: [
               Container(
-                  alignme가
-                    u.loginUser(_loginId.text.trim(),_password.text.trim());
+                  alignment: Alignment.center,
+                  height: 200,
+                  child:Text(
+                      "로그인 페이지",
+                      style:TextStyle(
+                        fontSize:30,
+                        fontWeight:FontWeight.bold,
+                      )
+                  )
+              ),
+              _loginForm()
+            ],
+          ),
+        )
+    );
+  }
+
+  Widget _loginForm() {
+    return Form(
+      key: _formKey,
+        child:Column(
+            children:[
+              CustomTextFormField(
+                hint:"ID",
+                funValidator: ValidateID(),
+              ),
+              CustomTextFormField(
+                hint:"Password",
+                funValidator: ValidatePassword(),
+              ),
+              CustomElevatedButton(
+                text: "로그인",
+                funpageRoute: (){
+                  if(_formKey.currentState!.validate()){
+                    //Get.to(MainPage());
+                    //u.login("fltk1004", "fltk1486");
+                    //UserRepositoryTwo u=UserRepositoryTwo();
+                    u.loginUser("ssar","1234");
 
                   }
                 },
