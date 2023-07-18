@@ -13,7 +13,11 @@ import 'components/customtextformfield.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey=GlobalKey<FormState>();
-  UserControllerTwo u=Get.put(UserControllerTwo());
+
+  //바뀐부분 세줄
+  final UserControllerTwo u=Get.put(UserControllerTwo());
+  final _loginId = TextEditingController();
+  final _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
