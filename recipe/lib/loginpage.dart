@@ -50,10 +50,14 @@ class LoginPage extends StatelessWidget {
         child:Column(
             children:[
               CustomTextFormField(
+                //추가
+                controller: _loginId,
                 hint:"ID",
                 funValidator: ValidateID(),
               ),
               CustomTextFormField(
+                //추가
+                controller: _password,
                 hint:"Password",
                 funValidator: ValidatePassword(),
               ),
