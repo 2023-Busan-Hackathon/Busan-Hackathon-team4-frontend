@@ -6,6 +6,7 @@ import 'dart:math';
 
 import '../components/customelevatedbutton.dart';
 import '../components/customtextformfield.dart';
+import '../controller/dto/GptApiDto.dart';
 import '../controller/gpt_controller.dart';
 import '../util/validatorutil.dart';
 import 'package:flutter/material.dart';
@@ -31,37 +32,38 @@ class MarkdownScreen extends StatelessWidget {
   }
 }
 
-class ShowGridScreen extends StatefulWidget{
+class ShowGridScreen extends StatefulWidget {
   @override
-  _ShowGridScreenState createState()=>_ShowGridScreenState();
+  _ShowGridScreenState createState() => _ShowGridScreenState();
 }
 
-class _ShowGridScreenState extends State<ShowGridScreen>{
-  final _formKey=GlobalKey<FormState>();
+class _ShowGridScreenState extends State<ShowGridScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   //세줄
-  final GptController u=Get.put(GptController());
-  final _ingredient=TextEditingController();
-  final _difficulty=TextEditingController();
+  final GptController u = Get.put(GptController());
+  final _ingredient = TextEditingController();
+  final _difficulty = TextEditingController();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: ListView(
           children: [
             CustomTextFormField(
               controller: _ingredient,
-              hint:"재료를 입력해주세요",
+              hint: "재료를 입력해주세요",
               funValidator: Validateingredient(),
             ),
             CustomTextFormField(
               controller: _difficulty,
-              hint:"난이도 쉬움/중간/어려움 선택해주세요",
+              hint: "난이도 쉬움/중간/어려움 선택해주세요",
               funValidator: Validateingredient(),
             ),
             CustomElevatedButton(
               text: "레시피 추천",
-              funpageRoute: (){
+              funpageRoute: () {
                 // if(_formKey.currentState!.validate()){
                 //   print(_ingredient.text.trim());
                 //   print(_difficulty.text.trim());
@@ -71,28 +73,15 @@ class _ShowGridScreenState extends State<ShowGridScreen>{
                 print(_ingredient.text.trim());
                 print(_difficulty.text.trim());
 
-                u.openAiGPT(_ingredient.text.trim(),_difficulty.text.trim());
+                u.openAiGPT(_ingredient.text.trim(), _difficulty.text.trim());
               },
             ),
-        Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.amber[300],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: FutureBuilder<String>(
-            future:_fetch1(),
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else {
-                return Markdown(data: snapshot.data ?? '');
-              }
-            },
-          ),
-        ),
+            CustomElevatedButton(
+              text: "레시피 불러오기",
+              funpageRoute: () {
+                u.getHistory();
+              },
+            ),
 
             // Container(
             //   padding: EdgeInsets.all(20),
@@ -103,42 +92,32 @@ class _ShowGridScreenState extends State<ShowGridScreen>{
             //   child:Text("assasa"),
             //
             // ),
-            TextField(
-              //controller: nameController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'chat gpt 답변',
-              ),
-              maxLines: 1,
-              onChanged: (value){
-
-              },
-            ),
+        Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.amber[300],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(gpt.gptResponse),
+          ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
                 ),
-                onPressed: (){
-
-
-                },
-                child: Text("다른 레시피도 볼래요")
-            ),
+                onPressed: () {},
+                child: Text("다른 레시피도 볼래요")),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
                 ),
-                onPressed: (){
-
-
-                },
-                child: Text("저장")
-            ),
+                onPressed: () {},
+                child: Text("저장")),
           ],
         ),
       ),
     );
   }
+
   Future<String> _fetch1() async {
     await Future.delayed(Duration(seconds: 2));
     return 'Call Data';

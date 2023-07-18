@@ -7,7 +7,12 @@ class GptController extends GetxController{
 
   Future<GptApiDto?> openAiGPT(String ingredient, String difficulty) async {
     GptApiDto? gptApiDto = (await _gptRepository.openAiGPT(ingredient, difficulty));
-    return gptApiDto;
+    return gptApiDto; //null 값임 안 쓰는 값
 
+  }
+
+  Future<GptApiDto?> getHistory() async {
+    GptApiDto? gptApiDto = (await _gptRepository.getHistory());
+    return gptApiDto;
   }
 }

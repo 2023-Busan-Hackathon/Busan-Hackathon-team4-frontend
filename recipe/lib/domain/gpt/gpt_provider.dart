@@ -12,7 +12,14 @@ const host="http://172.30.1.58:8080";
 
 class GptProvider extends GetConnect {
   Future<Response> openAiGPT(Map data) async {
+
     Response response = await post("$host/ai", data, headers: {"Authorization": jwtToken ?? ""});
+    return response;
+  }
+
+  Future<Response> getHistory() async {
+
+    Response response = await post("$host/ai/history", null, headers: {"Authorization": jwtToken ?? ""});
     return response;
   }
 }
