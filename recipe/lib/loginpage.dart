@@ -27,48 +27,8 @@ class LoginPage extends StatelessWidget {
           child: ListView(
             children: [
               Container(
-                  alignment: Alignment.center,
-                  height: 200,
-                  child:Text(
-                      "로그인 페이지",
-                      style:TextStyle(
-                        fontSize:30,
-                        fontWeight:FontWeight.bold,
-                      )
-                  )
-              ),
-              _loginForm()
-            ],
-          ),
-        )
-    );
-  }
-
-  Widget _loginForm() {
-    return Form(
-      key: _formKey,
-        child:Column(
-            children:[
-              CustomTextFormField(
-                //추가
-                controller: _loginId,
-                hint:"ID",
-                funValidator: ValidateID(),
-              ),
-              CustomTextFormField(
-                //추가
-                controller: _password,
-                hint:"Password",
-                funValidator: ValidatePassword(),
-              ),
-              CustomElevatedButton(
-                text: "로그인",
-                funpageRoute: (){
-                  if(_formKey.currentState!.validate()){
-                    //Get.to(MainPage());
-                    //u.login("fltk1004", "fltk1486");
-                    //UserRepositoryTwo u=UserRepositoryTwo();
-                    u.loginUser("ssar","1234");
+                  alignme가
+                    u.loginUser(_loginId.text.trim(),_password.text.trim());
 
                   }
                 },
