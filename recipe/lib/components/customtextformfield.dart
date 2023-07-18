@@ -26,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         //두줄추
         controller: controller,
-        initialValue: value ?? "",
+        initialValue: value,
         validator: funValidator,
         obscureText: hint=="Password" ? true : false,
         decoration: InputDecoration(
